@@ -21,11 +21,11 @@ public class Solution {
         StringBuilder result = new StringBuilder();
 
         for (int value : values) {
-            int count = num / value;  
-            if (count > 0) {
-                result.append(hm.get(value).repeat(count));  
-                num %= value;  
+            while (num >= value) {
+                result.append(hm.get(value));  // single hashmap lookup
+                num -= value;
             }
+            if (num == 0) break; // early exit
         }
         return result.toString();
     }
