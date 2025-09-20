@@ -18,13 +18,13 @@ public class Solution {
         hm.put(1, "I");
 
         int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-
         StringBuilder result = new StringBuilder();
 
         for (int value : values) {
-            while (num >= value) {
-                num -= value;
-                result.append(hm.get(value));
+            int count = num / value;  
+            if (count > 0) {
+                result.append(hm.get(value).repeat(count));  
+                num %= value;  
             }
         }
         return result.toString();
